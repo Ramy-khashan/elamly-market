@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+
+import '../../../core/utils/my_string.dart';
+
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("Notifications"),
+        ),
+        body: Center(
+          child: Text("No notifications yet!",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: MyStrings.fontFamily,
+                  fontSize: 27,
+                  fontWeight: FontWeight.bold)),
+        ));
+  }
+}

@@ -1,0 +1,65 @@
+class MyImages{
+  MyImages._();
+    //splash
+  static const String lightSplash='assets/images/light_splash.png';
+  static const String darkSplash='assets/images/dark_splash.png';
+    static const String en = "assets/images/en.jpg";
+  static const String ar = "assets/images/ar.png";
+  static const String carrot = 'assets/images/carrot.png';
+  static const String whiteCarrot = 'assets/images/white_carrot.png';
+  static const String x = 'assets/images/x.png';
+  static const String whiteEgg = 'assets/images/white_egg.png';
+  static const String spirit = 'assets/images/spirit.png';
+  static const String signIn = 'assets/images/sign_in.png';
+  static const String rice = 'assets/images/rice.png';
+  static const String redEgg = 'assets/images/red_egg.png';
+  static const String pulses = 'assets/images/pulses.png';
+  static const String pepsi = 'assets/images/pepsi.png';
+  static const String orangeJuice = 'assets/images/orange_juice.png';
+  static const String onBoarding = 'assets/images/on_boarding.png';
+  static const String oilAndGhee = 'assets/images/oil&ghee.png';
+  static const String meatAndFish = 'assets/images/meat&fish.png';
+  static const String mayonnaiseEggless = 'assets/images/mayonnaise_eggless.png';
+  static const String ginger = 'assets/images/ginger.png';
+  static const String fruitAndVegetables = 'assets/images/fruit&vegetables.png';
+  static const String failedOrder = 'assets/images/failed_order.png';
+  static const String eggPasta = 'assets/images/egg_pasta.png';
+  static const String eggNoodules = 'assets/images/egg_noodules.png';
+  static const String eggNoodules2 = 'assets/images/egg_noodules2.png';
+  static const String dietCoke = 'assets/images/diet_coke.png';
+  static const String diaryAndEggs = 'assets/images/diary&eggs.png';
+  static const String cocaCola = 'assets/images/coca_cola.png';
+  static const String chicken = 'assets/images/chicken.png';
+  static const String beverages = 'assets/images/beverages.png';
+  static const String bellPaperRed = 'assets/images/bell_paper_red.png';
+  static const String beefBone = 'assets/images/beef_bone.png';
+  static const String banner = 'assets/images/banner.png';
+  static const String bananna = 'assets/images/bananna.png';
+  static const String bakeryAndSnacks = 'assets/images/bakery&snacks.png';
+  static const String backgroundShape = 'assets/images/background_shape.png';
+  static const String apple = 'assets/images/apple.png';
+  static const String appleAndGrapeJuice = 'assets/images/apple&grape_juice.png';
+  static const String acceptOrder = 'assets/images/accept_order.png';
+   static const String congrate = "assets/images/congrate.png";
+  //icons
+  static const String aboutIcon = 'assets/icons/about_icon.png';
+  static const String accountIcon = 'assets/icons/account_icon.png';
+  static const String cartIcon = 'assets/icons/cart_icon.png';
+  static const String deliveryIcon = 'assets/icons/delivery_icon.png';
+  static const String detailsIcon = 'assets/icons/details_icon.png';
+  static const String exploreIcon = 'assets/icons/explore_icon.png';
+  static const String facebookIcon = 'assets/icons/facebook_icon.png';
+  static const String favouriteIcon = 'assets/icons/favourite_icon.png';
+  static const String filterIcon = 'assets/icons/filter_icon.png';
+  static const String googleIcon = 'assets/icons/google_icon.png';
+  static const String helpIcon = 'assets/icons/help_icon.png';
+  static const String locationIcon = 'assets/icons/location_icon.png';
+  static const String logoutIcon = 'assets/icons/logout_icon.png';
+  static const String notificationIcon = 'assets/icons/notification_icon.png';
+  static const String orderIcon = 'assets/icons/order_icon.png';
+  static const String paymentIcon = 'assets/icons/payment_icon.png';
+  static const String promoCardIcon = 'assets/icons/promo_card_icon.png';
+  static const String searchIcon = 'assets/icons/search_icon.png';
+  static const String shopIcon = 'assets/icons/shop_icon.png';
+
+}

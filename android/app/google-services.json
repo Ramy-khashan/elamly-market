@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "266444212127",
+    "project_id": "elamly-s-market",
+    "storage_bucket": "elamly-s-market.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266444212127:android:cea5001c52f6d4f930dfaa",
+        "android_client_info": {
+          "package_name": "com.RamyKhashan.elamlymarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB96BVdu2SNQFpelpeYs288b7fE74q5P4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "266444212127-6obfogmemu4hm1pptskkk4o24jm03skg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.elamlymarketDashboard"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266444212127:android:fbfc4dc64720421b30dfaa",
+        "android_client_info": {
+          "package_name": "com.example.delivery_boy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB96BVdu2SNQFpelpeYs288b7fE74q5P4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "266444212127-6obfogmemu4hm1pptskkk4o24jm03skg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.elamlymarketDashboard"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266444212127:android:59cd6ad8ada82b4e30dfaa",
+        "android_client_info": {
+          "package_name": "com.example.elamlymarket_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB96BVdu2SNQFpelpeYs288b7fE74q5P4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266444212127-9vvg6caug14161vugk6vfi9q3gp88tbm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "266444212127-6obfogmemu4hm1pptskkk4o24jm03skg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.elamlymarketDashboard"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

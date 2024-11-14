@@ -1,0 +1,16 @@
+{
+    "onBoardingWelcome":"Welcome",
+    "onBoardingToOurStore":"to our store",
+    "onBoardingSubTitle":"Ger your groceries in as fast as one hour",
+    "onBoardingGetStarted":"Get Started",
+    "homeExclusiveOffer":"Exclusive Offer",
+    "homeSeeAll":"See all",
+    "homeBestSelling":"Best Selling",
+    "homeGroceries":"Groceries",
+    "productDetails": "Product Details",
+    "nutritions": "Nutritions",
+    "review": "Review",
+    "addToBasket": "Add To Basket",
+    "findProduct": "Find Products"
+    
+}
