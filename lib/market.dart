@@ -1,5 +1,4 @@
-import 'package:elamlymarket/modules/login/view/login_screen.dart';
-import 'package:elamlymarket/modules/navigator_bar/view/navigator_bar_screen.dart';
+import 'package:elamlymarket/modules/splash_screen/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,7 +9,6 @@ import 'generated/l10n.dart';
 import 'core/utils/service_locator.dart';
 import 'modules/explore/controller/explore_cubit.dart';
 import 'modules/home/controller/home_cubit.dart';
-import 'modules/on_boarding/view/on_boarding_screen.dart';
 import 'modules/search/controller/search_cubit.dart';
 
 class Market extends StatelessWidget {
@@ -31,7 +29,8 @@ class Market extends StatelessWidget {
           create: (context) => AppCubit()
             ..getInitial()
             ..initNotification()
-            ..getSavedThemeMode(),
+            ..getSavedThemeMode()
+            ..setSplashTimer( ),
         ),
         BlocProvider<ExploreCubit>(
           create: (_) => sl<ExploreCubit>()..getCategories(),
@@ -50,30 +49,24 @@ class Market extends StatelessWidget {
               splitScreenMode: true,
               builder: (_, child) {
                 return MaterialApp(
-                  debugShowCheckedModeBanner: false,
-                  theme: lightTheme,
-                  navigatorKey: navigatorKet,
-                  darkTheme: darkTheme,
-                  themeMode: controller.isDarkTheme == null
-                      ? ThemeMode.system
-                      : controller.isDarkTheme!
-                          ? ThemeMode.dark
-                          : ThemeMode.light,
-                  locale: Locale('en'),
-                  localizationsDelegates: [
-                    S.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: S.delegate.supportedLocales,
-                  home: controller.onBoarding == "true"
-                      ? ((controller.isActive == "true" ||
-                              controller.isActive == null
-                          ? NavigatorBarScreen()
-                          : LoginScreen()))
-                      : OnBoardingScreen(),
-                );
+                    debugShowCheckedModeBanner: false,
+                    theme: lightTheme,
+                    navigatorKey: navigatorKet,
+                    darkTheme: darkTheme,
+                    themeMode: controller.isDarkTheme == null
+                        ? ThemeMode.system
+                        : controller.isDarkTheme!
+                            ? ThemeMode.dark
+                            : ThemeMode.light,
+                    locale: Locale('en'),
+                    localizationsDelegates: [
+                      S.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    supportedLocales: S.delegate.supportedLocales,
+                    home: SplashScreen());
               });
         },
       ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:elamlymarket/core/utils/storage_key.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../core/utils/my_string.dart';
 import '../../core/utils/shared_prefrance_utils.dart';
+import '../../market.dart';
+import '../../modules/login/view/login_screen.dart';
+import '../../modules/navigator_bar/view/navigator_bar_screen.dart';
+import '../../modules/on_boarding/view/on_boarding_screen.dart';
 
 part 'app_state.dart';
 
@@ -72,5 +78,19 @@ class AppCubit extends Cubit<AppState> {
 
   saveThemeMode() {
     PreferenceUtils.setString(MyStrings.themeMode, isDarkTheme.toString());
+  }
+
+  setSplashTimer( ) async{
+ await   Timer(
+        Duration(milliseconds: 2000),
+        () => Navigator.pushAndRemoveUntil(
+            Market.navigatorKet.currentContext!,
+            MaterialPageRoute(
+                builder: (context) => onBoarding == "true"
+                    ? ((isActive == "true" || isActive == null
+                        ? NavigatorBarScreen()
+                        : LoginScreen()))
+                    : OnBoardingScreen()),
+            (route) => false));
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/components/app_button.dart';
-import '../../../core/components/app_text_field.dart';
+ import '../../../core/components/app_text_field.dart';
 import '../../../core/components/loading_item.dart';
 import '../../../core/components/text_gradient.dart';
 import '../../../core/utils/my_colors.dart';
@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 15),
                             child: Image.asset(
-                              MyImages.carrot,
+                              MyImages.logo,
                               width: (120),
                               height: (90),
                               fit: BoxFit.contain,
@@ -179,16 +179,24 @@ class RegisterScreen extends StatelessWidget {
                                 top: 40, left: 20, right: 20),
                             child: controller.isLoadingRegistered
                                 ? LoadingItem()
-                                : AppButton(
-                                    width: double.infinity,
+                                : ElevatedButton(
                                     onPressed: () {
                                       if (controller.formKey.currentState!
                                           .validate()) {
                                         controller.register(context);
                                       }
                                     },
-                                    buttonText: "Create Account",
-                                  ),
+                                    style: ElevatedButton.styleFrom(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 13.h),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                      "Create Account",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 18.sp),
+                                    ))),
                           ),
                           TextButton(
                             style: TextButton.styleFrom(

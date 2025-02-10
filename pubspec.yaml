@@ -44,7 +44,6 @@ dependencies:
   cloud_firestore:  
   fancy_shimmer_image:
   card_swiper:
-
   equatable: ^2.0.5
   emailjs:
   pinput:
@@ -52,43 +51,17 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc:
-  
+
   get_it: ^7.6.0 
   flutter_localizations:
    sdk: flutter
-
-  flutter_native_splash: ^2.3.0
   flutter_screenutil: ^5.9.1
   shared_preferences: ^2.2.3
   fluttertoast: ^8.2.5
-flutter_native_splash:
-  color: "#53B175"
-  color_dark: "#000000"
-  image: assets/images/light_logo.png
-  image_dark: assets/images/dark_logo.png
-  icon_background_color: "#53B175"
-  icon_background_color_dark: "#000000"
-  android_12:
-    color: "#53B175"
-    color_dark: "#000000"
-    image: assets/images/light_logo.png
-    image_dark: assets/images/dark_logo.png
-    icon_background_color: "#53B175"
-    icon_background_color_dark: "#000000"
-
-
-  
-  
+    
 dev_dependencies:
-  flutter_launcher_icons: "^0.13.1"
   flutter_test:
     sdk: flutter
-
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/images/carrot.png"
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

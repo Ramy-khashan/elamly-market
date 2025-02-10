@@ -25,7 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Image.asset(
-              MyImages.whiteCarrot,
+              MyImages.logo,
               width: 48.w,
               height: 56.h,
             ),
@@ -71,7 +71,7 @@ class OnBoardingScreen extends StatelessWidget {
               height: 50.h,
               child: ElevatedButton(
                   onPressed: () async {
-                await    FlutterSecureStorage()
+                    await FlutterSecureStorage()
                         .write(key: MyStrings.onBoarding, value: "true");
                     Navigator.pushAndRemoveUntil(
                         context,

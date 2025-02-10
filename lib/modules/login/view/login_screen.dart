@@ -23,6 +23,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
+          backgroundColor: MyColors.greenColor,
           onPressed: () {
             supportDialog(context);
           },
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 30),
                             child: Image.asset(
-                              MyImages.carrot,
+                              MyImages.logo,
                               width: (130),
                               height: (100),
                               fit: BoxFit.contain,
@@ -127,15 +128,13 @@ class LoginScreen extends StatelessWidget {
                                       }
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: 13.h),
-                                        backgroundColor:
-                                            MyColors.searchBarColor),
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 13.h),
+                                    ),
                                     child: Center(
                                         child: Text(
                                       "Login",
                                       style: TextStyle(
-                                          color: MyColors.greenColor,
                                           fontWeight: FontWeight.w700,
                                           fontSize: 18.sp),
                                     ))),

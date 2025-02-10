@@ -28,7 +28,11 @@ class HomeScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(MyImages.carrot),
+                  Image.asset(
+                    MyImages.logo,
+                    width: 65.w,
+                    height: 65.h,
+                  ),
                   SizedBox(
                     height: 4.h,
                   ),
@@ -56,7 +60,10 @@ class HomeScreen extends StatelessWidget {
                   SearchBarWidget(
                     readOnly: true,
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>SearchScreen()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchScreen()));
                     },
                   )
                 ],
@@ -98,11 +105,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              // SectionLabel(onTap: () {}, title: S.of(context).homeGroceries),
-              // SizedBox(
-              //   height: 5.h,
-              // ),
-              // GroceriesSec/tion()
+             
             ],
           ),
         ),
