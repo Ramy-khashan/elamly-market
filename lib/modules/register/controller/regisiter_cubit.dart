@@ -1,12 +1,13 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:emailjs/emailjs.dart' as emailjs;
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../verification/view/verification_screen.dart';
 part 'regisiter_state.dart';
 
@@ -53,13 +54,7 @@ class RegisiterCubit extends Cubit<RegisiterState> {
               email: emailController.text.trim(),
               password: passwordController.text.trim())
           .then((value) async {
-        int verificationCode = generateRandomInt();
-        await sendEmail(templateParams: {
-          "subject": "Verify Account",
-          "name": nameController.text.trim(),
-          "email": emailController.text.trim(),
-          "message": verificationCode,
-        });
+       
         FirebaseFirestore.instance.collection("users").add({
           "email": emailController.text.trim(),
           // "password": passwordController.text.trim(),
@@ -67,7 +62,7 @@ class RegisiterCubit extends Cubit<RegisiterState> {
           "fullname": nameController.text.trim(),
           "authId": value.user!.uid.toString(),
           "registerTime": DateTime.now().toString(),
-          "verificactionCode": verificationCode,
+          // "verificactionCode": verificationCode,
           "isActive": true,
           "isVerified": false,
           "token": registerToken,
@@ -77,9 +72,8 @@ class RegisiterCubit extends Cubit<RegisiterState> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => VerificationScreen(
+                builder: (context) => VerifyEmailScreen(
                   email: emailController.text.trim(),
-                  code: verificationCode,
                   userDocId: value.id,
                 ),
               ));
@@ -94,31 +88,24 @@ class RegisiterCubit extends Cubit<RegisiterState> {
       debugPrint(e.toString());
     }
   }
-
-  sendEmail({Map<String, dynamic>? templateParams}) async {
-    try {
-      await emailjs.send(
-        'service_wics0vk',
-        'template_qxk68gy',
-        templateParams,
-        const emailjs.Options(
-            publicKey: 'WSKPELKgoonIipEI9',
-            privateKey: "1hsnmaI-qFd4IcqZZM6s_"),
-      );
-      debugPrint('SUCCESS!');
-      return true;
-    } catch (error) {
-      if (error is emailjs.EmailJSResponseStatus) {
-        debugPrint('ERROR... ${error.status}: ${error.text}');
-      }
-      debugPrint(error.toString());
-      return false;
-    }
-  }
-
+ 
   String? registerToken = "";
   getToken() async {
-    registerToken = await FirebaseMessaging.instance.getToken();
+    await [Permission.notification].request();
+
+    final message = FirebaseMessaging.instance;
+    await message.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: true,
+      provisional: false,
+      sound: true,
+    );
+    registerToken = Platform.isAndroid
+        ? await message.getToken()
+        : await message.getAPNSToken();
     print(registerToken);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import '../../../core/components/loading_item.dart';
 import '../../../core/utils/my_colors.dart';
 import '../../../core/utils/my_string.dart';
@@ -95,6 +96,74 @@ class DeliveryAddressScreen extends StatelessWidget {
                                   Text(
                                     "Land Mark : ${controller.deliveryAddress[index].landmark}",
                                   ),
+                                  controller.deliveryAddress[index].latitude ==
+                                              null ||
+                                          controller.deliveryAddress[index]
+                                              .latitude!.isEmpty
+                                      ? SizedBox()
+                                      : ElevatedButton.icon(
+                                        style: ElevatedButton.styleFrom(
+                                          shadowColor: Colors.grey,
+                                          elevation: 6,
+                                          backgroundColor: Colors.white,
+                                          padding: EdgeInsets.symmetric(horizontal: 20)
+                                        ),
+                                          onPressed: () {
+                                            showBottomSheet(
+
+                                                enableDrag: true,
+                                                context: context,
+                                                builder: (context) => Card(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          15)),
+                                                      clipBehavior: Clip
+                                                          .antiAliasWithSaveLayer,
+                                                      child: Column(
+                                                        mainAxisSize: MainAxisSize.min,
+                                                        children: [
+                                                          Align(
+                                                            alignment: AlignmentDirectional.topEnd,
+                                                            child: IconButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                icon: Icon(
+                                                                  Icons.close,
+                                                                  color:
+                                                                      Colors.red,
+                                                                )),
+                                                          ),
+                                                          Expanded(
+                                                            child: OpenStreetMapSearchAndPick(
+                                                              isWithButton: false,
+                                                              center: LatLong(
+                                                                  double.parse(controller
+                                                                      .deliveryAddress[
+                                                                          index]
+                                                                      .latitude
+                                                                      .toString()),
+                                                                  double.parse(controller
+                                                                      .deliveryAddress[
+                                                                          index]
+                                                                      .longitude
+                                                                      .toString())),
+                                                              buttonColor:
+                                                                  Colors.blue,
+                                                              onPicked: (PickedData
+                                                                  pickedData) {},
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ));
+                                          },
+                                          icon: Icon(Icons.location_on,color: Colors.black,),
+                                          label: Text("Your location",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),)),
                                   Align(
                                     alignment: AlignmentDirectional.centerEnd,
                                     child: Row(

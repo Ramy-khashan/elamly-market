@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-              SectionLabel(onTap: () {}, title: S.of(context).homeBestSelling),
+              SectionLabel(onTap: () {}, title: "Products"),
               SizedBox(
                 height: 5.h,
               ),
@@ -105,7 +105,6 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 10.h,
               ),
-             
             ],
           ),
         ),

@@ -4,7 +4,10 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../../../core/components/need_login_model_sheet.dart';
 import '../../../core/utils/service_locator.dart';
+import '../../../core/utils/storage_key.dart';
 import '../../home/controller/home_cubit.dart';
 import '../../home/model/product.dart';
 import '../controller/product_details_cubit.dart';
@@ -31,7 +34,7 @@ class ProductDetailsScreen extends StatelessWidget {
           leading: Padding(
             padding: const EdgeInsets.all(4),
             child: InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.pop(context);
               },
               borderRadius: BorderRadius.circular(35),
@@ -102,10 +105,19 @@ class ProductDetailsScreen extends StatelessWidget {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       trailing: IconButton(
-                                          onPressed: () {
-                                            sl.get<HomeCubit>().addToFavorite(
-                                                  controller.productDetails!,
-                                                );
+                                          onPressed: () async {
+                                            String? userID =
+                                                await const FlutterSecureStorage()
+                                                    .read(
+                                                        key: StorageKey
+                                                            .userDocId);
+                                            if (userID == null) {
+                                              needLogin(context: context);
+                                            } else {
+                                              sl.get<HomeCubit>().addToFavorite(
+                                                    controller.productDetails!,
+                                                  );
+                                            }
                                           },
                                           icon: Icon(
                                             Icons.favorite_outline,
@@ -263,10 +275,17 @@ class ProductDetailsScreen extends StatelessWidget {
                         margin: EdgeInsets.all(10),
                         height: 50.h,
                         child: ElevatedButton(
-                            onPressed: () {
-                              sl.get<HomeCubit>().addToCart(
-                                  controller.productDetails!,
-                                  controller.quantity);
+                            onPressed: () async {
+                              String? userID =
+                                  await const FlutterSecureStorage()
+                                      .read(key: StorageKey.userDocId);
+                              if (userID == null) {
+                                needLogin(context: context);
+                              } else {
+                                sl.get<HomeCubit>().addToCart(
+                                    controller.productDetails!,
+                                    controller.quantity);
+                              }
                             },
                             child: Text(S.of(context).addToBasket)),
                       )

@@ -5,6 +5,8 @@ class DeliveryAddressModel {
   String? phone2;
   String? fullAddress;
   String? landmark;
+  String? latitude;
+  String? longitude;
 
   DeliveryAddressModel(
       {this.id,
@@ -12,11 +14,15 @@ class DeliveryAddressModel {
       this.phone1,
       this.phone2,
       this.fullAddress,
+      this.latitude,
+      this.longitude,
       this.landmark});
 
   DeliveryAddressModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     fullName = json['full_name'];
+    latitude = json['latitude'];
+    longitude = json['longitude'];
     phone1 = json['phone1'];
     phone2 = json['phone2'];
     fullAddress = json['full_address'];
@@ -31,6 +37,9 @@ class DeliveryAddressModel {
     data['phone2'] = this.phone2;
     data['full_address'] = this.fullAddress;
     data['landmark'] = this.landmark;
+    data['longitude'] = this.longitude;
+    data['latitude'] = this.latitude;
+
     return data;
   }
 }

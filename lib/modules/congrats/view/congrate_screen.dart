@@ -1,63 +1,69 @@
 import 'package:elamlymarket/modules/login/view/login_screen.dart';
 import 'package:flutter/material.dart';
-import '../../../core/utils/my_colors.dart';
-import '../../../core/components/app_button.dart';
-import '../../../core/components/text_gradient.dart';
+import 'package:lottie/lottie.dart';
 
-import '../../../core/utils/my_images.dart';
-
-class CongrateScreen extends StatelessWidget {
-  const CongrateScreen({super.key, required this.content});
-  final String content;
+class SuccessScreen extends StatelessWidget {
+  const SuccessScreen({
+    super.key,
+    this.onPressed,
+  });
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.zero,
         child: Padding(
-          padding: const EdgeInsets.all(25),
+          padding: EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      MyImages.congrate,
-                      width: (180),
-                      height: (170),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 40, bottom: 10),
-                      child: GradientText(
-                        gradient: LinearGradient(
-                            colors: [MyColors.greenColor, MyColors.greyColor]),
-                        text: "Congrats!",
-                        style: TextStyle(fontSize: 28, fontFamily: "mainFont"),
-                      ),
-                    ),
-                    Text(
-                      content,
-                      style:
-                          const TextStyle(fontSize: 23, fontFamily: "mainFont"),
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 16.0,
               ),
-              Center(
-                child: AppButton(
-                  width: 200,
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                        (route) => false);
-                  },
-                  buttonText: "Back To Login",
-                ),
-              )
+              //Image
+
+              Lottie.asset("assets/images/verification_done.json"),
+              const SizedBox(
+                height: 16.0,
+              ),
+              //Title and subtitle
+              Text(
+                "Your account successfully created!",
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                  "Welcome to Elamly Market: Prepare Exlosive Offers and Discover Unlimited Sales!",
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center),
+              const SizedBox(
+                height: 16.0,
+              ),
+              //Buttons
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: onPressed == null
+                        ? () {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                                (route) => false);
+                          }
+                        : onPressed,
+                    child: Text(
+                      "Continue",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleMedium!
+                          .apply(color: Colors.white),
+                    )),
+              ),
             ],
           ),
         ),

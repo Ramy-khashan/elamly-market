@@ -30,7 +30,7 @@ class Market extends StatelessWidget {
             ..getInitial()
             ..initNotification()
             ..getSavedThemeMode()
-            ..setSplashTimer( ),
+            ..setSplashTimer(),
         ),
         BlocProvider<ExploreCubit>(
           create: (_) => sl<ExploreCubit>()..getCategories(),

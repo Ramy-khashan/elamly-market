@@ -1,4 +1,5 @@
 import 'package:elamlymarket/core/components/loading_item.dart';
+import 'package:elamlymarket/modules/navigator_bar/view/navigator_bar_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -159,6 +160,30 @@ class LoginScreen extends StatelessWidget {
                               ]),
                               style: TextStyle(
                                   fontSize: 12,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          TextButton(
+                            style: TextButton.styleFrom(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20)),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NavigatorBarScreen(),
+                                  ));
+                            },
+                            child: const GradientText(
+                              text: "Continue as a Guest",
+                              gradient: LinearGradient(colors: [
+                                MyColors.greenColor,
+                                MyColors.greyColor
+                              ]),
+                              style: TextStyle(
+                                  fontSize: 14,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.bold),
                             ),

@@ -8,6 +8,13 @@ sealed class AddEditAddressState extends Equatable {
 }
 
 final class AddEditAddressInitial extends AddEditAddressState {}
+
 final class LoadingAddEditAddEditAddressState extends AddEditAddressState {}
+
 final class AddEditAddEditAddressState extends AddEditAddressState {}
+
 final class FailedAddEditAddEditAddressState extends AddEditAddressState {}
+
+final class GetLocationData extends AddEditAddressState {}
+
+final class SetLocationData extends AddEditAddressState {}

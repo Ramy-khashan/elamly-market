@@ -115,7 +115,7 @@ class S {
   String get homeBestSelling {
     return Intl.message(
       'Most Selling',
-      name: 'homeBestSelling',
+      name: 'products',
       desc: '',
       args: [],
     );

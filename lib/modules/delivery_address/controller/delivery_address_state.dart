@@ -11,3 +11,4 @@ final class DeliveryAddressInitial extends DeliveryAddressState {}
 final class LoadingGetDeliveryAddressState extends DeliveryAddressState {}
 final class GetDeliveryAddressState extends DeliveryAddressState {}
 final class FailedGetDeliveryAddressState extends DeliveryAddressState {}
+ 

@@ -91,9 +91,9 @@ class LoginCubit extends Cubit<LoginState> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => VerificationScreen(
+                  builder: (context) => VerifyEmailScreen(
                         email: value.docs.first.data()['email'],
-                        code: value.docs.first.data()['verificactionCode'],
+                        // code: value.docs.first.data()['verificactionCode'],
                         userDocId: value.docs.first.id,
                       )));
         }
@@ -124,11 +124,51 @@ class LoginCubit extends Cubit<LoginState> {
 
   getToken() async {
     WidgetsFlutterBinding.ensureInitialized();
+
     await [Permission.notification].request();
     try {
+      final message = FirebaseMessaging.instance;
+      await message.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
 
-      registerToken = await FirebaseMessaging.instance.getToken();
-      FirebaseMessaging.instance.subscribeToTopic("market");
+      // if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      //   await message.deleteToken();
+      //   String? token = await message.getToken();
+      //   print("FCM Token: $token");
+      // } else {
+      //   print('User declined or has not accepted permission');
+      // }
+
+      // FirebaseMessaging.instance.
+      // registerToken=await message.getToken();
+      // await FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
+      //   registerToken = fcmToken.toString();
+      //   print("FCM Token L " + registerToken.toString());
+      //   print("FCM Token L " + fcmToken.toString());
+      // });
+//================================================================
+      // try {
+      //   registerToken = await message.getToken();
+      // } catch (e) {
+      //   debugPrint("Issues : " + e.toString());
+      // }
+//================================================================
+
+      try {
+        registerToken = await message.getToken();
+      } catch (e) {
+        debugPrint(e.toString());
+      }
+
+      // await FirebaseMessaging.instance.subscribeToTopic("market");
+      debugPrint("test : " + registerToken.toString());
       NotificationService().initNotification();
 
       FirebaseMessaging.onMessage.listen((event) async {
@@ -143,7 +183,7 @@ class LoginCubit extends Cubit<LoginState> {
 
       FirebaseMessaging.onMessageOpenedApp.listen((event) {});
     } catch (e) {
-      debugPrint(e.toString());
+      debugPrint("error : " + e.toString());
     }
   }
 }

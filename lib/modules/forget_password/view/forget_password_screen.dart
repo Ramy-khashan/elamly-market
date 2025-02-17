@@ -20,6 +20,9 @@ class ForgetPasswordScreen extends StatelessWidget {
           ForgetPasswordCubit controller = ForgetPasswordCubit.get(context);
           return Scaffold(
             appBar: AppBar(
+              scrolledUnderElevation: 0,
+              elevation: 0,
+              shadowColor: Colors.transparent,
               leading: IconButton(
                   onPressed: controller.isChangePassword
                       ? () {

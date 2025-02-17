@@ -17,7 +17,7 @@ import '../model/navigator_bar_model.dart';
 part 'navigator_bar_state.dart';
 
 class NavigatorBarCubit extends Cubit<NavigatorBarState> {
-  NavigatorBarCubit() : super(NavigatorBarInitial());
+  NavigatorBarCubit() : super(NavigatorBarInitial()) {}
   static NavigatorBarCubit get(context) => BlocProvider.of(context);
   List<NavigatorBarModel> navigatorItem = [
     NavigatorBarModel(page: HomeScreen(), title: "Shop", icon: Icons.shop),
@@ -31,9 +31,13 @@ class NavigatorBarCubit extends Cubit<NavigatorBarState> {
         page: AccountScreen(), title: "Account", icon: CupertinoIcons.person),
   ];
   int selectedTab = 0;
-  selectTab(int? index) {
+  selectTab(int? index) async {
+    String? userId =
+        await const FlutterSecureStorage().read(key: StorageKey.userDocId);
+
     emit(NavigatorBarInitial());
-    if (userDocId == null) {
+    print(userId);
+    if (userId == null) {
       if (index == 0 || index == 1) {
         selectedTab = index!;
       } else {
@@ -47,6 +51,8 @@ class NavigatorBarCubit extends Cubit<NavigatorBarState> {
 
   String? userDocId;
   getUserData() async {
+    emit(NavigatorBarInitial());
+
     userDocId =
         await const FlutterSecureStorage().read(key: StorageKey.userDocId);
 

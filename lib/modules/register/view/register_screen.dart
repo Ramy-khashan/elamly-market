@@ -1,9 +1,10 @@
+import 'package:elamlymarket/modules/login/view/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
- import '../../../core/components/app_text_field.dart';
+import '../../../core/components/app_text_field.dart';
 import '../../../core/components/loading_item.dart';
 import '../../../core/components/text_gradient.dart';
 import '../../../core/utils/my_colors.dart';
@@ -203,9 +204,11 @@ class RegisterScreen extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 20)),
                             onPressed: () {
-                              Navigator.pop(
-                                context,
-                              );
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()),
+                                  (route) => false);
                             },
                             child: const GradientText(
                               text: "Already have an account?",

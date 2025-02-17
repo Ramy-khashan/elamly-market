@@ -28,7 +28,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
           .collection("favorite_products")
           .get()
           .then((value) {
-        print(value.docs.length);
+       
         value.docs.forEach((doc) {
           favoriteProducts.add(FavoriteProductModel.fromJson(doc.data()));
         });

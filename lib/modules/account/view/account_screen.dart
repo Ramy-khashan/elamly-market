@@ -29,9 +29,12 @@ class AccountScreen extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 14),
-                          child: CircleAvatar(
-                            radius: 32,
-                            child: FancyShimmerImage(
+                          child: Container(
+                            decoration: BoxDecoration(shape: BoxShape.circle,),
+                            width: 80,
+                            height: 80,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                             child: FancyShimmerImage(
                                 imageUrl: controller.image ?? ""),
                           ),
                         ),
@@ -46,12 +49,7 @@ class AccountScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 19),
                                 ),
-                                // GestureDetector(
-                                //     onTap: () {},
-                                //     child: Icon(
-                                //       Icons.edit,
-                                //       color: MyColors.greenColor,
-                                //     ))
+                                
                               ],
                             ),
                             SizedBox(

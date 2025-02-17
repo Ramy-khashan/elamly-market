@@ -132,7 +132,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
               .delete();
         });
       }).onError((error, stackTrace) {
-        print(error);
+        debugPrint(error.toString());
       });
       Navigator.pushAndRemoveUntil(
           Market.navigatorKet.currentContext!,

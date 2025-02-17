@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 
 import '../../../core/components/toast_app.dart';
 import '../../../core/utils/storage_key.dart';
@@ -51,14 +52,15 @@ class AddEditAddressCubit extends Cubit<AddEditAddressState> {
       "phone2": phone2.text,
       "full_address": fullAddress.text,
       "landmark": landMark.text,
-      "is_defualt":false
+      "is_defualt": false,
+      "latitude": latitude,
+      "longitude": longitude,
     }).then((value) {
       isLoading = false;
       emit(AddEditAddEditAddressState());
 
       toastApp(message: "Added to delivery address successfully");
       Navigator.pop(Market.navigatorKet.currentContext!);
-
     }).onError((error, stackTrace) {
       toastApp(message: "Failed to add to delivery address");
       isLoading = false;
@@ -73,6 +75,8 @@ class AddEditAddressCubit extends Cubit<AddEditAddressState> {
     phone2.text = deliveryAddressModel.phone2 ?? "";
     fullAddress.text = deliveryAddressModel.fullAddress ?? "";
     landMark.text = deliveryAddressModel.landmark ?? "";
+    latitude = deliveryAddressModel.latitude.toString();
+    longitude = deliveryAddressModel.longitude.toString();
     // formKey.currentState!.validate();
   }
 
@@ -99,6 +103,8 @@ class AddEditAddressCubit extends Cubit<AddEditAddressState> {
           : fullAddress.text,
       "landmark":
           landMark.text.isEmpty ? deliveryAddressModel.landmark : landMark.text,
+      "latitude": latitude,
+      "longitude": longitude,
     }).then((value) {
       isLoading = false;
       emit(AddEditAddEditAddressState());
@@ -110,5 +116,20 @@ class AddEditAddressCubit extends Cubit<AddEditAddressState> {
       isLoading = false;
       emit(FailedAddEditAddEditAddressState());
     });
+  }
+
+  LatLong location = const LatLong(30.97239231796135, 31.323342622493566);
+
+  String latitude = "";
+  String longitude = "";
+  getLocationAndAddress(PickedData locationData, context) {
+    emit(GetLocationData());
+
+    latitude = locationData.latLong.latitude.toString();
+    longitude = locationData.latLong.longitude.toString();
+
+    // fullAddress.text = locationData.address.values.toString();
+    emit(SetLocationData());
+    Navigator.pop(context);
   }
 }
