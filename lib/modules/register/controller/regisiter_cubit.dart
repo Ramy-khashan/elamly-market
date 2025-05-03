@@ -2,6 +2,8 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elamlymarket/core/components/toast_app.dart';
+import 'package:elamlymarket/core/utils/firebase_auth_exceptions.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,7 +56,6 @@ class RegisiterCubit extends Cubit<RegisiterState> {
               email: emailController.text.trim(),
               password: passwordController.text.trim())
           .then((value) async {
-       
         FirebaseFirestore.instance.collection("users").add({
           "email": emailController.text.trim(),
           // "password": passwordController.text.trim(),
@@ -78,17 +79,15 @@ class RegisiterCubit extends Cubit<RegisiterState> {
                 ),
               ));
         });
-      });
+      }).catchError((e) => toastApp(message: getMessageFromErrorCode(e.code),isError: true));
       isLoadingRegistered = false;
       emit(AccountCreatedState());
     } catch (e) {
       isLoadingRegistered = false;
       emit(AccountCreatedFailedState());
-
-      debugPrint(e.toString());
     }
   }
- 
+
   String? registerToken = "";
   getToken() async {
     await [Permission.notification].request();

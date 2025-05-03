@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elamlymarket/core/utils/storage_key.dart';
 import 'package:elamlymarket/market.dart';
 import 'package:equatable/equatable.dart';
@@ -14,11 +15,15 @@ import '../../notifications/view/notification_screen.dart';
 import '../../delivery_address/view/delivery_address_screen.dart';
 import '../../orders/view/orders_screen.dart';
 import '../../reports/view/reports_screen.dart';
+import '../view/widgets/show_delete_dialog.dart';
 part 'account_state.dart';
 
 class AccountCubit extends Cubit<AccountState> {
   AccountCubit() : super(AccountInitial());
   static AccountCubit get(context) => BlocProvider.of(context);
+  final TextEditingController emailController=TextEditingController();
+  final TextEditingController passwordController=TextEditingController();
+  final GlobalKey<FormState>formKeyLogin=GlobalKey<FormState>();
   List<NavigatorBarModel> accountItems = [
     NavigatorBarModel(
       icon: CupertinoIcons.app_badge_fill,
@@ -51,6 +56,32 @@ class AccountCubit extends Cubit<AccountState> {
       page: ReportsScreen(),
     ),
   ];
+    bool hideDeleteAccount = true;
+  getShowHideDeleteAccount() async {
+    await FirebaseFirestore.instance
+        .collection("configration")
+        .doc("hideDeleteAccount")
+        .get()
+        .then((value) => hideDeleteAccount = value.get("hide"));
+    emit(GetDeleteAccountState());
+  }
+ bool isLoadingDelete = false;
+  deleteAccount(context) async {
+    try {
+      isLoadingDelete = true;
+      emit(LoadingDeleteState());
+
+      await showDeleteDialog(context,);
+      print("User account deleted successfully.");
+
+      isLoadingDelete = false;
+      emit(DeletedState());
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+      isLoadingDelete = false;
+      emit(FailedDeleteState());
+    }
+  }
   String? name;
   String? image;
   String? email;
@@ -75,4 +106,5 @@ class AccountCubit extends Cubit<AccountState> {
         MaterialPageRoute(builder: (context) => LoginScreen()),
         (route) => false);
   }
+  
 }

@@ -14,6 +14,7 @@ needLogin({required BuildContext context}) {
     barrierColor: Colors.transparent,
     elevation: 0,
     builder: (context) => Container(
+      width: double.infinity,
       margin: EdgeInsets.only(top: getHeight(50)),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(

@@ -82,7 +82,7 @@ class AppCubit extends Cubit<AppState> {
 
   setSplashTimer( ) async{
  await   Timer(
-        Duration(milliseconds: 2000),
+        Duration(milliseconds: 2400),
         () => Navigator.pushAndRemoveUntil(
             Market.navigatorKet.currentContext!,
             MaterialPageRoute(

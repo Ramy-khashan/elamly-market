@@ -1,7 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/utils/camil_case.dart';
 import '../../../../core/utils/my_colors.dart';
-import '../../../../core/utils/my_string.dart';
 import '../../model/favorite_product_model.dart';
 
 class FavoriteItem extends StatelessWidget {
@@ -25,7 +26,7 @@ class FavoriteItem extends StatelessWidget {
               backgroundColor: Theme.of(context).cardColor,
               child: IconButton(
                 icon: Icon(
-                  Icons.delete,
+                  CupertinoIcons.trash,
                   color: Colors.red.shade600,
                 ),
                 onPressed: onDelete,
@@ -35,13 +36,11 @@ class FavoriteItem extends StatelessWidget {
         ),
         child: FancyShimmerImage(imageUrl: product.productImageUrl ?? ""),
         footer: GridTileBar(
-          backgroundColor: MyColors.greenColor.withOpacity(.43),
+          backgroundColor: MyColors.orangeColor.withOpacity(.43),
           title: Center(
-            child: Text(product.productName ?? "",
-                style: TextStyle(
-                    fontFamily: MyStrings.fontFamily,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 21)),
+            child: Text(camilCaseMethod(product.productName ?? ""),
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22)),
           ),
         ),
       ),

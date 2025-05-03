@@ -8,4 +8,13 @@ sealed class AccountState extends Equatable {
 }
 
 final class AccountInitial extends AccountState {}
+
 final class GetUserDataState extends AccountState {}
+
+final class GetDeleteAccountState extends AccountState {}
+
+final class LoadingDeleteState extends AccountState {}
+
+final class DeletedState extends AccountState {}
+
+final class FailedDeleteState extends AccountState {}

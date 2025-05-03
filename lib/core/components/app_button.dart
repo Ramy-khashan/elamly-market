@@ -10,7 +10,8 @@ class AppButton extends StatelessWidget {
       this.isIcon = false,
       required this.onPressed,
       this.width,
-      this.btnColorWhite = false, this.textColor});
+      this.btnColorWhite = false,
+      this.textColor});
   final Widget? buttonChild;
   final String? buttonText;
   final Color? textColor;
@@ -24,7 +25,6 @@ class AppButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(isIcon! ? 30 : 15),
       splashColor: Colors.grey,
       hoverColor: Colors.white,
-      
       highlightColor: Colors.grey.shade300,
       onTap: onPressed,
       child: AnimatedContainer(
@@ -42,16 +42,22 @@ class AppButton extends StatelessWidget {
                         Colors.white,
                         Colors.white,
                       ]
-                    : [MyColors.greenColor, MyColors.greyColor],
+                    : [
+                        const Color.fromARGB(255, 255, 156, 90),
+                        MyColors.orangeColor,
+                        MyColors.orangeColor,
+                        // const Color.fromARGB(255, 184, 95, 0),
+                        const Color.fromARGB(255, 255, 156, 90),
+                      ],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight)),
         child: buttonChild ??
             Text(
               buttonText ?? "",
               textAlign: TextAlign.center,
-              style:   TextStyle(
+              style: TextStyle(
                 fontSize: 18,
-                color: textColor??Colors.white,
+                color: textColor ?? Colors.white,
                 fontFamily: "mainFont",
                 fontWeight: FontWeight.w800,
               ),

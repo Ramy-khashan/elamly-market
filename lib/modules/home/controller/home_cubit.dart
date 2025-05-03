@@ -92,7 +92,7 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  addToCart(ProductModel product, int quantity) async {
+  Future addToCart(ProductModel product, int quantity) async {
     String? userDocID =
         await FlutterSecureStorage().read(key: StorageKey.userDocId);
     print(userDocID);

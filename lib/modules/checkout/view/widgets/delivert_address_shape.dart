@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+ 
 import '../../../../core/utils/my_colors.dart';
 import '../../../../core/utils/my_string.dart';
 import '../../../add_edit_address/view/add_edit_address.dart';
@@ -21,17 +20,26 @@ class DeliveryAddressShape extends StatelessWidget {
       builder: (context, state) {
         final controller = CheckoutCubit.get(context);
         return InkWell(
-            onTap: () {},
+            onTap: () {
+              controller.onSelectDeliveryAddress(index);
+            },
             child: Row(
               children: [
-                Radio.adaptive(
-                    value: index,
-                    groupValue: controller.selectedDeliveryAddress,
-                    onChanged: (val) {
-                      controller.onSelectDeliveryAddress(val);
-                    }),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Radio.adaptive(
+                      value: index,
+                      activeColor: MyColors.orangeColor,
+                      groupValue: controller.selectedDeliveryAddress,
+                      onChanged: (val) {
+                        controller.onSelectDeliveryAddress(val);
+                      }),
+                ),
                 Expanded(
                   child: Card(
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? null
+                        : Colors.orange.shade50,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: DefaultTextStyle(
@@ -39,7 +47,7 @@ class DeliveryAddressShape extends StatelessWidget {
                             color: Theme.of(context).brightness.index == 1
                                 ? MyColors.blackColor
                                 : MyColors.whiteColor,
-                            fontSize: 14.sp,
+                            fontSize: 14,
                             fontWeight: FontWeight.w600,
                             fontFamily: MyStrings.fontFamily),
                         child: Column(
@@ -89,7 +97,7 @@ class DeliveryAddressShape extends StatelessWidget {
                                       });
                                     },
                                     child: Card(
-                                      color: MyColors.greenColor,
+                                      color: Colors.orange,
                                       elevation: 5,
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -104,8 +112,6 @@ class DeliveryAddressShape extends StatelessWidget {
                                             Text(
                                               "  Edit",
                                               style: TextStyle(
-                                                fontFamily:
-                                                    MyStrings.fontFamily,
                                                 color: MyColors.whiteColor,
                                                 fontSize: 17,
                                                 fontWeight: FontWeight.w700,

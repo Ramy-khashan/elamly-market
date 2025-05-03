@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../utils/my_colors.dart';
+ import '../utils/my_colors.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showLeading;
@@ -32,7 +31,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? Text(
               title,
               style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: MyColors.blackColor),
             )

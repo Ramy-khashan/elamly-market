@@ -6,7 +6,6 @@ import 'package:elamlymarket/core/utils/storage_key.dart';
 import 'package:elamlymarket/modules/home/controller/home_cubit.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../modules/home/model/product.dart';
 import '../../modules/product_details/view/product_details_screen.dart';
@@ -35,9 +34,9 @@ class ProductWidget extends StatelessWidget {
           },
           child: Center(
             child: Container(
-              margin: EdgeInsetsDirectional.only(end: isWithSpace ? 12 : 0),
+              margin: EdgeInsetsDirectional.symmetric(horizontal: 5),
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              width: 155.w,
+              width: MediaQuery.of(context).size.width * .45,
               decoration: BoxDecoration(
                 border: Border.all(
                     color: MyColors.greyColor.withOpacity(.4), width: 1),
@@ -49,9 +48,12 @@ class ProductWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Expanded(
-                    child: FancyShimmerImage(
-                      imageUrl: product.images!.first,
-                      boxFit: BoxFit.fill,
+                    child: Padding(
+                      padding: EdgeInsets.all(2),
+                      child: FancyShimmerImage(
+                        imageUrl: product.images!.first,
+                        boxFit: BoxFit.fill,
+                      ),
                     ),
                   ),
                   Padding(
@@ -62,25 +64,25 @@ class ProductWidget extends StatelessWidget {
                         Text(
                           product.title ?? "",
                           style: TextStyle(
-                            fontSize: 14.sp,
+                            fontSize: 14,
                             color:
                                 Theme.of(context).textTheme.titleMedium!.color,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         SizedBox(
-                          height: 5.h,
+                          height: 5,
                         ),
                         // Text(
                         //   product.subTitle,
                         //   style: TextStyle(
                         //     color: MyColors.grey2Color,
-                        //     fontSize: 11.sp,
-                        //     fontWeight: FontWeight.w400,
+                        //     fontSize: 11,
+                        //     fontWeight: FontWeight400,
                         //   ),
                         // ),
                         // SizedBox(
-                        //   height: 10.h,
+                        //   height: 10,
                         // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -94,12 +96,12 @@ class ProductWidget extends StatelessWidget {
                                     style: TextStyle(
                                       color: MyColors.darkRedColor,
                                       decorationThickness: 2,
-                                      fontSize: 13.sp,
+                                      fontSize: 13,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 SizedBox(
-                                  height: 5.w,
+                                  height: 5,
                                 ),
                                 Text(
                                   '${product.price} LE',
@@ -113,7 +115,7 @@ class ProductWidget extends StatelessWidget {
                                         : TextDecoration.none,
                                     decorationColor: MyColors.darkRedColor,
                                     decorationThickness: 2,
-                                    fontSize: product.isOnSale! ? 12.sp : 13.sp,
+                                    fontSize: product.isOnSale! ? 12 : 13,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -150,7 +152,8 @@ class ProductWidget extends StatelessWidget {
           ),
         ),
         PositionedDirectional(
-            end: 20,
+          top: 10,
+            end: MediaQuery.of(context).size.width * .02,
             child: IconButton(
                 onPressed: () async {
                   String? userID = await const FlutterSecureStorage()

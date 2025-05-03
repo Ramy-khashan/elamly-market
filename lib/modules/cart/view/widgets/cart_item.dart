@@ -18,6 +18,7 @@ class CartItem extends StatelessWidget {
       child: SizedBox(
         height: 160,
         child: Card(
+           color:Theme.of(context).brightness.index==0?null: Colors.orange.shade50,
           margin: EdgeInsets.all(8),
           clipBehavior: Clip.antiAliasWithSaveLayer,
           elevation: 3,
@@ -97,7 +98,7 @@ class CartItem extends StatelessWidget {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       side: BorderSide(
-                                          color: MyColors.greenColor,
+                                          color: MyColors.orangeColor,
                                           width: 1)),
                                   heroTag: "${cartItem.id}+add",
                                   onPressed: () {
@@ -105,7 +106,7 @@ class CartItem extends StatelessWidget {
                                   },
                                   child: Icon(
                                     Icons.add,
-                                    color: MyColors.greenColor,
+                                    color: MyColors.orangeColor,
                                     size: 22,
                                   )),
                               Spacer(),

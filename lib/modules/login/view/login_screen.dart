@@ -24,11 +24,15 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: MyColors.greenColor,
+          backgroundColor: MyColors.orangeColor,
           onPressed: () {
             supportDialog(context);
           },
-          child: Icon(Icons.support_agent),
+          child: Icon(
+            Icons.support_agent,
+            color: MyColors.whiteColor,
+            size: 30,
+          ),
         ),
         body: Stack(
           children: [
@@ -41,28 +45,9 @@ class LoginScreen extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 30),
-                            child: Image.asset(
-                              MyImages.logo,
-                              width: (130),
-                              height: (100),
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          const GradientText(
-                            text: "Elamly Market",
-                            gradient: LinearGradient(colors: [
-                              MyColors.greenColor,
-                              MyColors.greyColor
-                            ]),
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontFamily: "mainFont",
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
+                          Image.asset(
+                            MyImages.logo,
+                            fit: BoxFit.fill,
                           ),
                           const Text(
                             "Deliever Favorite Food",
@@ -108,8 +93,9 @@ class LoginScreen extends StatelessWidget {
                               child: Text(
                                 "Forgot Your Password?",
                                 style: TextStyle(
-                                    color: Colors.red.shade600,
+                                    color: Colors.red,
                                     fontSize: 12,
+                                    decorationColor: Colors.red,
                                     decoration: TextDecoration.underline,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -137,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                                       "Login",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700,
-                                          fontSize: 18.sp),
+                                          fontSize: 18),
                                     ))),
                           ),
                           TextButton(
@@ -155,11 +141,12 @@ class LoginScreen extends StatelessWidget {
                             child: const GradientText(
                               text: "Don't have an accout?",
                               gradient: LinearGradient(colors: [
-                                MyColors.greenColor,
-                                MyColors.greyColor
+                                MyColors.orangeColor,
+                                MyColors.deepOrangeColor,
+                                MyColors.orangeColor,
                               ]),
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 15,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -179,11 +166,12 @@ class LoginScreen extends StatelessWidget {
                             child: const GradientText(
                               text: "Continue as a Guest",
                               gradient: LinearGradient(colors: [
-                                MyColors.greenColor,
-                                MyColors.greyColor
+                                MyColors.orangeColor,
+                                MyColors.deepOrangeColor,
+                                MyColors.orangeColor,
                               ]),
                               style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 15,
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.bold),
                             ),

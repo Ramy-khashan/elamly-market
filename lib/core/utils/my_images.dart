@@ -5,7 +5,8 @@ class MyImages{
   static const String darkSplash='assets/images/dark_splash.png';
     static const String en = "assets/images/en.jpg";
   static const String ar = "assets/images/ar.png";
-  static const String logo = 'assets/images/logo.png';
+  static const String logo = 'assets/images/show_logo.png';
+   static const String splashScreen = 'assets/images/wallpaper.png';
    static const String x = 'assets/images/x.png';
   static const String whiteEgg = 'assets/images/white_egg.png';
   static const String spirit = 'assets/images/spirit.png';

@@ -44,7 +44,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
       emit(GetDeliveryAddressState());
     }).onError((error, stackTrace) {
-      debugPrint(error.toString());
+      // debugPrint(error.toString());
       isLoading = false;
       emit(FailedGetDeliveryAddressState());
     });
@@ -132,14 +132,14 @@ class CheckoutCubit extends Cubit<CheckoutState> {
               .delete();
         });
       }).onError((error, stackTrace) {
-        debugPrint(error.toString());
+        // debugPrint(error.toString());
       });
       Navigator.pushAndRemoveUntil(
           Market.navigatorKet.currentContext!,
           MaterialPageRoute(builder: (context) => NavigatorBarScreen()),
           (route) => false);
     }).onError((error, stackTrace) {
-      debugPrint(error.toString());
+      // debugPrint(error.toString());
       isLoadingCreateOrder = false;
       toastApp(message: "Order created failed");
 

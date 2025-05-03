@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
+ import 'package:open_street_map_search_and_pick/open_street_map_search_and_pick.dart';
 import '../../../core/components/loading_item.dart';
 import '../../../core/utils/my_colors.dart';
 import '../../../core/utils/my_string.dart';
@@ -75,7 +74,7 @@ class DeliveryAddressScreen extends StatelessWidget {
                                   color: Theme.of(context).brightness.index == 1
                                       ? MyColors.blackColor
                                       : MyColors.whiteColor,
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: MyStrings.fontFamily),
                               child: Column(

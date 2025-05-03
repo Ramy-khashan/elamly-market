@@ -1,8 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:elamlymarket/core/components/toast_app.dart';
 import 'package:elamlymarket/modules/home/model/product.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import '../../../core/components/need_login_model_sheet.dart';
+import '../../../core/utils/service_locator.dart';
+import '../../../core/utils/storage_key.dart';
+import '../../home/controller/home_cubit.dart';
 
 part 'product_details_state.dart';
 
@@ -13,7 +19,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     if (productId == null) {
       productDetails = productModel;
     } else {
-      getProduct(productId:productId);
+      getProduct(productId: productId);
     }
   }
   static ProductDetailsCubit get(context) => BlocProvider.of(context);
@@ -27,7 +33,7 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
 
   bool isLoading = false;
   getProduct({String? productId}) async {
-    isLoading = true;
+   try{ isLoading = true;
 
     emit(LoadingGetProductState());
 
@@ -42,8 +48,11 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
     }).onError((error, stackTrace) {
       isLoading = false;
       emit(FailedGetProductState());
-      debugPrint(error.toString());
-    });
+      // debugPrint(error.toString());
+    });}catch(e){
+       isLoading = false;
+      emit(FailedGetProductState());
+    }
   }
 
   int quantity = 1;
@@ -60,5 +69,28 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       quantity--;
     }
     emit(DecrementQuantityState());
+  }
+
+  bool isLoadingAddToBasket = false;
+  addToBasket(context) async {
+    try {
+      isLoadingAddToBasket = true;
+      emit(AddProductToBasketState());
+
+      String? userID =
+          await const FlutterSecureStorage().read(key: StorageKey.userDocId);
+      if (userID == null) {
+        needLogin(context: context);
+      } else {
+     await   sl.get<HomeCubit>().addToCart(productDetails!, quantity);
+      }
+      isLoadingAddToBasket = false;
+
+      emit(AddedProductToBasketState());
+    } catch (e) {
+      isLoadingAddToBasket = false;
+      toastApp(message: e.toString());
+      emit(FailedAddProductToBasketState());
+    }
   }
 }

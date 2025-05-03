@@ -128,8 +128,7 @@ class AddEditAddressCubit extends Cubit<AddEditAddressState> {
     latitude = locationData.latLong.latitude.toString();
     longitude = locationData.latLong.longitude.toString();
 
-    // fullAddress.text = locationData.address.values.toString();
-    emit(SetLocationData());
+     emit(SetLocationData());
     Navigator.pop(context);
   }
 }

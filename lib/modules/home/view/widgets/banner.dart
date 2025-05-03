@@ -1,4 +1,5 @@
 import 'package:elamlymarket/core/components/loading_item.dart';
+import 'package:elamlymarket/core/utils/contact_method.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../controller/home_cubit.dart';
@@ -19,12 +20,22 @@ class BannerWidget extends StatelessWidget {
             : controller.adsItems.isEmpty
                 ? SizedBox()
                 : SizedBox(
-                    height: (250),
+                    height: 220,
                     child: Swiper(
                       itemBuilder: (BuildContext context, int index) {
-                        return FancyShimmerImage(
-                          imageUrl: controller.adsItems[index].image!,
-                          boxFit: BoxFit.fill,
+                        return GestureDetector(
+                          onTap: controller.adsItems[index].url == null ||
+                                  controller.adsItems[index].url!.isEmpty
+                              ? null
+                              : () {
+                                  Contact.launchSite(controller
+                                      .adsItems[index].url
+                                      .toString());
+                                },
+                          child: FancyShimmerImage(
+                            imageUrl: controller.adsItems[index].image!,
+                            boxFit: BoxFit.fill,
+                          ),
                         );
                       },
                       autoplay: controller.adsItems.length == 1 ? false : true,
@@ -35,7 +46,7 @@ class BannerWidget extends StatelessWidget {
                             color: Colors.white,
                             activeColor: Theme.of(context).primaryColor,
                           )),
-                     ),
+                    ),
                   );
       },
     );

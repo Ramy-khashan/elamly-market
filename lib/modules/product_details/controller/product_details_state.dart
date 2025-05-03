@@ -15,3 +15,6 @@ final class FailedGetProductState extends ProductDetailsState {}
 final class StartChangeQuantityState extends ProductDetailsState {}
 final class IncrementQuantityState extends ProductDetailsState {}
 final class DecrementQuantityState extends ProductDetailsState {}
+final class AddProductToBasketState extends ProductDetailsState {}
+final class AddedProductToBasketState extends ProductDetailsState {}
+final class FailedAddProductToBasketState extends ProductDetailsState {}

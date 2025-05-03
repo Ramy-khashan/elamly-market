@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/utils/my_images.dart';
+  import '../../../core/utils/my_images.dart';
 import '../../../core/utils/service_locator.dart';
 import '../../../generated/l10n.dart';
 
@@ -19,9 +18,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         bottom: PreferredSize(
-            preferredSize: Size.fromHeight(110.h),
+            preferredSize: Size.fromHeight( 140),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Column(
@@ -30,11 +30,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     MyImages.logo,
-                    width: 65.w,
-                    height: 65.h,
-                  ),
-                  SizedBox(
-                    height: 4.h,
+                    height: 100,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -45,17 +41,17 @@ class HomeScreen extends StatelessWidget {
                         color: Theme.of(context).iconTheme.color,
                       ),
                       SizedBox(
-                        width: 6.w,
+                        width: 6,
                       ),
                       Text(
                         'Egypt, Cairo',
                         style: TextStyle(
-                            fontSize: 14.sp, fontWeight: FontWeight.w500),
+                            fontSize: 14, fontWeight: FontWeight.w500),
                       )
                     ],
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 10,
                   ),
                   SearchBarWidget(
                     readOnly: true,
@@ -82,28 +78,28 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
-                height: 8.h,
+                height: 8,
               ),
               BannerWidget(),
               SizedBox(
-                height: 10.h,
+                height: 10,
               ),
               SectionLabel(
                   onTap: () {}, title: S.of(context).homeExclusiveOffer),
               SizedBox(
-                height: 5.h,
+                height: 5,
               ),
               OfferSection(),
               SizedBox(
-                height: 10.h,
+                height: 10,
               ),
               SectionLabel(onTap: () {}, title: "Products"),
               SizedBox(
-                height: 5.h,
+                height: 5,
               ),
               BestSellingSection(),
               SizedBox(
-                height: 10.h,
+                height: 10,
               ),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:elamlymarket/core/components/app_button.dart';
 import 'package:elamlymarket/core/components/app_text_field.dart';
 import 'package:elamlymarket/core/utils/validate.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class ReportsScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical:15),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
                         child: Column(
@@ -55,21 +57,16 @@ class ReportsScreen extends StatelessWidget {
                             const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
                         child: controller.isLoading
                             ? LoadingItem()
-                            : ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.symmetric(vertical: 20)),
+                            : AppButton(
+                              
                                 onPressed: () {
                                   controller.setReport();
                                 },
-                                child: Center(
-                                  child: Text(
+                                buttonText:  
                                     "Send Report",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18),
-                                  ),
-                                ),
+                                
+                          
+                             
                               ),
                       )
                     ],

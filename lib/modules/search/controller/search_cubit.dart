@@ -29,7 +29,7 @@ class SearchCubit extends Cubit<SearchState> {
       emit(state.copyWith(
           searchState: RequestState.loaded, products: productItems));
     }).onError((error, stackTrace) {
-      debugPrint("Error : " + error.toString());
+      // debugPrint("Error : " + error.toString());
       emit(state.copyWith(searchState: RequestState.error, products: []));
     });
   }
@@ -53,8 +53,8 @@ class SearchCubit extends Cubit<SearchState> {
       });
     
     productItems.length.toString();
-    debugPrint("productItems : " + productItems.length.toString());
-    debugPrint("productsFromSearch : " + productsFromSearch.length.toString());
+    // debugPrint("productItems : " + productItems.length.toString());
+    // debugPrint("productsFromSearch : " + productsFromSearch.length.toString());
     emit(state.copyWith(
         searchState: RequestState.loaded,
         products: val!.isEmpty ? productItems : productsFromSearch));

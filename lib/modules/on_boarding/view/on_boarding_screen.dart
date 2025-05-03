@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../../core/utils/my_colors.dart';
 import '../../../core/utils/my_string.dart';
 
@@ -26,11 +25,10 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Image.asset(
               MyImages.logo,
-              width: 48.w,
-              height: 56.h,
+             
             ),
             SizedBox(
-              height: 20.h,
+              height: 20,
             ),
             RichText(
               textAlign: TextAlign.center,
@@ -38,7 +36,7 @@ class OnBoardingScreen extends StatelessWidget {
                   text: '${S.of(context).onBoardingWelcome}\n',
                   style: TextStyle(
                       color: MyColors.whiteColor,
-                      fontSize: 30.sp,
+                      fontSize: 30,
                       fontFamily: MyStrings.fontFamily,
                       fontWeight: FontWeight.w500),
                   children: [
@@ -46,29 +44,29 @@ class OnBoardingScreen extends StatelessWidget {
                       text: S.of(context).onBoardingToOurStore,
                       style: TextStyle(
                           color: MyColors.whiteColor,
-                          fontSize: 30.sp,
+                          fontSize: 30,
                           fontFamily: MyStrings.fontFamily,
                           fontWeight: FontWeight.w500),
                     )
                   ]),
             ),
             SizedBox(
-              height: 10.h,
+              height: 10,
             ),
             Text(
               S.of(context).onBoardingSubTitle,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: MyColors.lightwhiteColor,
-                fontSize: 14.sp,
+                fontSize: 14,
                 fontFamily: MyStrings.fontFamily,
               ),
             ),
             SizedBox(
-              height: 25.h,
+              height: 25,
             ),
             SizedBox(
-              height: 50.h,
+              height: 50,
               child: ElevatedButton(
                   onPressed: () async {
                     await FlutterSecureStorage()

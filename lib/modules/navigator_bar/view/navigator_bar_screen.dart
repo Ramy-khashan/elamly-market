@@ -19,7 +19,7 @@ class NavigatorBarScreen extends StatelessWidget {
             body: controller.navigatorItem[controller.selectedTab].page,
             bottomNavigationBar: BottomNavigationBar(
                 showUnselectedLabels: true,
-                selectedItemColor: MyColors.greenColor,
+                selectedItemColor: MyColors.orangeColor,
                 unselectedItemColor: MyColors.greyColor,
                 currentIndex: controller.selectedTab,
                 onTap: controller.selectTab,

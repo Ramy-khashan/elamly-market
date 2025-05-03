@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
- 
+  
 
 class SectionLabel extends StatelessWidget {
   final VoidCallback onTap;
@@ -16,7 +15,7 @@ class SectionLabel extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
          
         ],

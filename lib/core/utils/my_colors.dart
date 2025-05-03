@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class MyColors{
   MyColors._();
   static const Color greenColor= Color(0xFF53B175);
-  static const Color orangeColor= Color(0xFFF8A44C);
+  // static const Color orangeColor= Color(0xFFF8A44C);
+  static const Color orangeColor= Color.fromARGB(255, 255, 102, 0);
+  static const Color deepOrangeColor= Color.fromARGB(255, 160, 86, 7);
   static const Color blackColor= Color(0xFF030303);
   static const Color whiteColor= Color(0xFFFFFFFF);
   static const Color lightwhiteColor= Color(0xFFFCFCFC);

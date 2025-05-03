@@ -164,16 +164,19 @@ class LoginCubit extends Cubit<LoginState> {
       try {
         registerToken = await message.getToken();
       } catch (e) {
-        debugPrint(e.toString());
+        // debugPrint(e.toString());
       }
 
       // await FirebaseMessaging.instance.subscribeToTopic("market");
-      debugPrint("test : " + registerToken.toString());
+      // debugPrint("test : " + registerToken.toString());
       NotificationService().initNotification();
 
       FirebaseMessaging.onMessage.listen((event) async {
         String? title = event.notification?.title;
         String? body = event.notification?.body;
+        toastApp(
+            message:
+                "onMessageOpenedApp : " + event.notification!.body.toString());
 
         await NotificationService().showNotification(
             Random().nextInt(10000) * Random().nextInt(10000),
@@ -181,9 +184,13 @@ class LoginCubit extends Cubit<LoginState> {
             body ?? "");
       });
 
-      FirebaseMessaging.onMessageOpenedApp.listen((event) {});
+      FirebaseMessaging.onMessageOpenedApp.listen((event) {
+        toastApp(
+            message:
+                "onMessageOpenedApp : " + event.notification!.body.toString());
+      });
     } catch (e) {
-      debugPrint("error : " + e.toString());
+      // debugPrint("error : " + e.toString());
     }
   }
 }

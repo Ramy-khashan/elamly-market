@@ -2,9 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../core/utils/my_colors.dart';
- import '../../../config/app/app_cubit.dart';
+ import '../../../core/utils/my_colors.dart';
+import '../../../config/app/app_cubit.dart';
 import '../../../core/utils/my_string.dart';
 import '../controller/account_cubit.dart';
 
@@ -14,7 +13,9 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AccountCubit>(
-      create: (context) => AccountCubit()..getUserData(),
+      create: (context) => AccountCubit()
+        ..getUserData()
+        ..getShowHideDeleteAccount(),
       child: Scaffold(
         body: BlocBuilder<AccountCubit, AccountState>(
           builder: (context, state) {
@@ -30,11 +31,13 @@ class AccountScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 14),
                           child: Container(
-                            decoration: BoxDecoration(shape: BoxShape.circle,),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
                             width: 80,
                             height: 80,
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                             child: FancyShimmerImage(
+                            child: FancyShimmerImage(
                                 imageUrl: controller.image ?? ""),
                           ),
                         ),
@@ -49,7 +52,6 @@ class AccountScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 19),
                                 ),
-                                
                               ],
                             ),
                             SizedBox(
@@ -74,8 +76,11 @@ class AccountScreen extends StatelessWidget {
                         physics: NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.zero,
                         itemBuilder: (context, index) => Card(
-                              margin: EdgeInsets.only(bottom: 5),
+                          color: Colors.orange.shade300,
+                              margin: EdgeInsets.only(
+                                  bottom: 6, left: 10, right: 10),
                               elevation: 2,
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
                               child: ListTile(
                                 onTap: () {
                                   Navigator.push(
@@ -85,14 +90,26 @@ class AccountScreen extends StatelessWidget {
                                             .accountItems[index].page!,
                                       ));
                                 },
-                                leading:
-                                    Icon(controller.accountItems[index].icon),
+                                leading: Icon(
+                                  controller.accountItems[index].icon,
+ color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,                                ),
                                 title: Text(
                                     controller.accountItems[index].title,
                                     style: TextStyle(
-                                        fontFamily: MyStrings.fontFamily,
+ color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,                                        fontFamily: MyStrings.fontFamily,
                                         fontWeight: FontWeight.bold)),
-                                trailing: Icon(Icons.arrow_forward_ios),
+                                trailing: Icon(
+                                  Icons.arrow_forward_ios,
+ color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,                                ),
                               ),
                             ),
                         itemCount: controller.accountItems.length),
@@ -100,21 +117,40 @@ class AccountScreen extends StatelessWidget {
                       builder: (context, state) {
                         AppCubit appController = AppCubit.get(context);
                         return Card(
-                          margin: EdgeInsets.only(bottom: 5),
+                          margin:
+                              EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
                           elevation: 2,
+                          color: Colors.orange.shade300,
                           child: ListTile(
                             onTap: () {
                               appController.toggelBritness(
                                   isDark:
                                       !(appController.isDarkTheme ?? false));
                             },
-                            leading: Icon(Icons.dark_mode),
-                            title: Text("Dark Mode",
+                            leading: Icon(
+                              appController.isDarkTheme!
+                                  ? Icons.sunny
+                                  : Icons.dark_mode,
+                              color:
+                                  Theme.of(context).brightness == Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black,
+                            ),
+                            title: Text(
+                                appController.isDarkTheme!
+                                    ? "Light Mode"
+                                    : "Dark Mode",
                                 style: TextStyle(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontFamily: MyStrings.fontFamily,
                                     fontWeight: FontWeight.bold)),
                             trailing: CupertinoSwitch(
                                 value: appController.isDarkTheme!,
+                                activeColor: MyColors.whiteColor,
                                 onChanged: (val) {
                                   appController.toggelBritness(isDark: val);
                                 }),
@@ -122,6 +158,29 @@ class AccountScreen extends StatelessWidget {
                         );
                       },
                     ),
+                    controller.hideDeleteAccount
+                        ? SizedBox.shrink()
+                        : Card(
+                            color: const Color.fromARGB(255, 160, 43, 17),
+                            margin: EdgeInsets.only(
+                                bottom: 5, top: 2, left: 10, right: 10),
+                            elevation: 2,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: ListTile(
+                              leading: Icon(
+                                CupertinoIcons.trash,
+                                color: Colors.white,
+                              ),
+                              onTap: () async {
+                                await controller.deleteAccount(context);
+                              },
+                              title: Text('Delete Account',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: MyStrings.fontFamily,
+                                      fontWeight: FontWeight.bold)),
+                            ),
+                          ),
                     // Padding(
                     //   padding: const EdgeInsets.symmetric(
                     //       horizontal: 4.0, vertical: 10),
@@ -208,22 +267,26 @@ class AccountScreen extends StatelessWidget {
                           },
                           style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(vertical: 20),
-                              backgroundColor: MyColors.searchBarColor),
+                              elevation: 6,
+                              shadowColor: Colors.grey,
+                              backgroundColor: Theme.of(context).cardColor),
                           child: Row(
                             children: [
                               Expanded(
                                   flex: 1,
-                                  child: Icon(Icons.logout_outlined,
-                                      color: MyColors.greenColor)),
+                                  child: Icon(
+                                    Icons.logout_outlined,
+                                    color: Colors.red.shade500,
+                                  )),
                               Expanded(
                                   flex: 4,
                                   child: Center(
                                       child: Text(
                                     "Log out",
                                     style: TextStyle(
-                                        color: MyColors.greenColor,
+                                        color: Colors.red.shade500,
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 18.sp),
+                                        fontSize: 18),
                                   ))),
                             ],
                           )),

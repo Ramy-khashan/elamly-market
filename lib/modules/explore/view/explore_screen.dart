@@ -20,7 +20,7 @@ class ExploreScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           S.of(context).findProduct,
-          style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         bottom: PreferredSize(

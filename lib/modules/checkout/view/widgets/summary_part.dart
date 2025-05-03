@@ -19,7 +19,7 @@ class SummaryPart extends StatelessWidget {
           clipBehavior: Clip.antiAliasWithSaveLayer,
           margin: EdgeInsets.all(8),
           decoration: BoxDecoration(
-              border: Border.all(width: 1, color: MyColors.greenColor),
+              border: Border.all(width: 1, color: MyColors.orangeColor),
               borderRadius: BorderRadius.circular(15)),
           child: Column(
             children: [
@@ -42,7 +42,7 @@ class SummaryPart extends StatelessWidget {
                         },
                         icon: Icon(controller.isToggledSummary
                             ? Icons.arrow_drop_up_rounded
-                            : Icons.arrow_drop_down_rounded))
+                            : Icons.arrow_drop_down_rounded,color: MyColors.orangeColor,))
                   ],
                 ),
               ),
@@ -70,7 +70,7 @@ class SummaryPart extends StatelessWidget {
                         title: Text('Delivery Fees'),
                         trailing: Text("${controller.deliveryAddressFees} L.E"),
                       ),
-                      Divider(color: MyColors.greenColor),
+                      Divider(color: MyColors.orangeColor),
                       ListTile(
                         dense: true,
                         title: Text('Total Price'),

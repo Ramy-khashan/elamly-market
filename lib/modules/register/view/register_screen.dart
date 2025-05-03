@@ -36,29 +36,14 @@ class RegisterScreen extends StatelessWidget {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: Image.asset(
-                              MyImages.logo,
-                              width: (120),
-                              height: (90),
-                              fit: BoxFit.contain,
-                            ),
+                          Image.asset(
+                            MyImages.logo,
+                            fit: BoxFit.fill,
                           ),
-                          const GradientText(
-                            text: "Elamly's Market",
-                            gradient: LinearGradient(colors: [
-                              MyColors.greenColor,
-                              MyColors.greyColor
-                            ]),
-                            style: TextStyle(
-                              fontSize: 40,
-                              fontFamily: "mainFont",
-                            ),
-                          ),
+
                           const Text(
                             "Deliever Favorite Food",
-                            style: TextStyle(fontSize: 13),
+                            style: TextStyle(fontSize: 13,fontWeight: FontWeight.w700),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: (30), bottom: (15)),
@@ -196,7 +181,7 @@ class RegisterScreen extends StatelessWidget {
                                       "Create Account",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700,
-                                          fontSize: 18.sp),
+                                          fontSize: 18),
                                     ))),
                           ),
                           TextButton(
@@ -212,14 +197,15 @@ class RegisterScreen extends StatelessWidget {
                             },
                             child: const GradientText(
                               text: "Already have an account?",
-                              gradient: LinearGradient(colors: [
-                                MyColors.greenColor,
-                                MyColors.greyColor
+                           gradient: LinearGradient(colors: [
+                                MyColors.orangeColor,
+                                MyColors.deepOrangeColor,
+                                MyColors.orangeColor,
                               ]),
                               style: TextStyle(
                                   fontSize: 13,
                                   decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,fontFamily: "assets/fonts/Gilroy/Gilroy-Bold.ttf"),
                             ),
                           ),
                         ],
